@@ -4,13 +4,21 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @Description: TODO
+ * @Description: VenkUtil
  * @author: Venk007
  * @date: 2015年12月5日上午1:41:15
  * 
  */
 public class VenkUtil {
 
+	static String uc = "UTF-8";
+	static String tip1 = "%25u6562%25u7528%25u54e5%25u7684%25u4ee3%"
+			+ "25u7801%25u7834%25u89e3%25u54e5%25u7684%25u5bc"
+			+ "6%25u7801%25uff0c%25u662f%25u4e0d%25u662f%25u4"
+			+ "e0d%25u60f3%25u6d3b%25u5566%25uff1f%25uff01";
+	static String tip2 = "%25u5973%25u795e%25u7684%25u8d26%25u53f7%"
+			+ "25u65e0%25u6cd5%25u7834%25u89e3%2521";
+	
 	public static String escape(String src) {
 		int i;
 		char j;
@@ -71,7 +79,6 @@ public class VenkUtil {
 
 	/**
 	 * MD5加密
-	 * 
 	 * @param args
 	 */
 	public static String toMd5(String str) {
@@ -85,9 +92,7 @@ public class VenkUtil {
 			md5.update(tem);
 			encrypt = md5.digest();
 			StringBuilder sb = new StringBuilder();
-
 			for (byte t : encrypt) {
-
 				sb.append(Integer.toHexString(t & 0xFF));
 			}
 			re = sb.toString();
@@ -96,35 +101,21 @@ public class VenkUtil {
 		}
 		return re;
 	}
-
-	public static void main(String[] args) {
-
-		// 测试escape编码
+	/** 
+	 * Venk's say
+	 * @param args
+	 */
+	public static void s(int i){
+		if(i == 1){
+			System.out.println(VenkUtil.unescape((Decode.urlDecode(tip1,uc))));
+		} else if(i == 2) {
+			System.out.println(VenkUtil.unescape((Decode.urlDecode(tip2,uc))));
+		}
+	}
+	
+	public static void goDie(){
 		
-		  String testEscapeA = "嘿嘿啊哈"; String testEscapeB =
-		  "`~!@-=+,./?01234aBcDeFg啊哈"; System.out.println("A编码：" +
-		  escape(testEscapeA)); System.out.println("B编码：" +
-		  escape(testEscapeB));
-		 
-
-		// 测试unescape解码
-		
-		  String testUnescapeA = "%u563f%u563f%u554a%u54c8"; String
-		  testUnescapeB =
-		  "%60%7e%21%40%2d%3d%2b%2c%2e%2f%3f01234aBcDeFg%u554a%u54c8";
-		  System.out.println("A解码：" + unescape(testUnescapeA));
-		  System.out.println("B解码：" + unescape(testUnescapeB));
-		 
-
-		// 测试md5加密
-		/*
-		 * String testMd5 = "Hello Venk"; System.out.println(toMd5(testMd5));
-		 * System.out.println(toMd5("Hello Venk"));
-		 * System.out.println(toMd5("Hello md5"));
-		 * System.out.println(toMd5("c945041e6aa78ff5ca8fdb2a238d9d"));
-		 * System.out.println(toMd5(toMd5("Hello md5")));
-		 */
-
+		System.exit(0);
 	}
 
 }

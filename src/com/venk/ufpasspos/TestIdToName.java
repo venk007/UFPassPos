@@ -10,20 +10,17 @@ import java.io.UnsupportedEncodingException;
  */
 public class TestIdToName {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		
-		String id = "1205170100";
+		// 输入学号，查看学生姓名
+		String id = "1201234567";
 		
 		try {
-			IdToName.idToName(id);
+			IdToName.idToName(id,0);
 		} catch (UnsupportedEncodingException e) {
-			System.out.println("Error: idToName()");
+			System.out.println("Error: IdToName()");
 			e.printStackTrace();
 		}
 	}
-
 }
 
